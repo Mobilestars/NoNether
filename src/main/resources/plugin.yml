@@ -1,0 +1,9 @@
+name: NoNether
+version: '1.0.0'
+main: de.scholle.noNether.NoNether
+api-version: '1.18'
+prefix: NoNether
+load: STARTUP
+authors: [ Mobilestars ]
+description: Prevent players from entering the Nether.
+website: https://modrinth.com/project/nonether-plugin
