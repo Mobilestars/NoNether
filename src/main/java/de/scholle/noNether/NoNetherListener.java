@@ -15,13 +15,16 @@ import java.util.UUID;
 public class NoNetherListener implements Listener {
 
     private final Map<UUID, Long> lastWarn;
+    private final NoNether plugin;
 
-    public NoNetherListener() {
+    public NoNetherListener(NoNether plugin) {
+        this.plugin = plugin;
         this.lastWarn = new HashMap<>();
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPortal(PlayerPortalEvent e) {
+        if (!plugin.getConfig().getBoolean("nonether", true)) return;
         if (e.getTo() != null && e.getTo().getWorld() != null &&
                 e.getTo().getWorld().getEnvironment() == World.Environment.NETHER) {
             e.setCancelled(true);
@@ -31,6 +34,7 @@ public class NoNetherListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onTeleport(PlayerTeleportEvent e) {
+        if (!plugin.getConfig().getBoolean("nonether", true)) return;
         if (e.getTo() != null && e.getTo().getWorld() != null &&
                 e.getTo().getWorld().getEnvironment() == World.Environment.NETHER) {
             e.setCancelled(true);

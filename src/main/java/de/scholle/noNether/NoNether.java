@@ -6,7 +6,8 @@ public class NoNether extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(new NoNetherListener(), this);
+        saveDefaultConfig();
+        getServer().getPluginManager().registerEvents(new NoNetherListener(this), this);
         getLogger().info("NoNether enabled!");
     }
 
